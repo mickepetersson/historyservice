@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/music/api/v1")
+@RequestMapping("/media/music/api/v1")
 public class MediaController {
 
     @Autowired
     private MediaServices mediaServices;
 
     //get all media
-   /* @GetMapping("/getallmedia")
+   /* @GetMapping("/media/getallmedia")
     public List<MediaInterface> getAllAllMedia(){
         return mediaServices.getAllMedia();
     }
@@ -26,7 +26,7 @@ public class MediaController {
 
 
 /*
-    @GetMapping("/getallbymediatype/{mediaType}")
+    @GetMapping("/media/getallbymediatype/{mediaType}")
     public List<MediaInterface> allMediaByMediaType(@PathVariable("mediaType")String mediaType){
         return mediaServices.allMediaByMediaType(mediaType);
     }

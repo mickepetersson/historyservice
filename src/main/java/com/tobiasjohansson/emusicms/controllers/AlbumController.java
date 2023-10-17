@@ -24,33 +24,33 @@ public class AlbumController {
     }
 
     // Album By Track name
-    @GetMapping("/albumbytrackname/{trackName}")
+    @GetMapping("/album/albumbytrackname/{trackName}")
     public Album getAlbumByTrackName(@PathVariable("trackName") String trackName){
         return albumService.findAlbumByTrackName(trackName);
     }
     // GET ALBUM BY ARTIST NAME
-    @GetMapping("/albumsbyartistname/{artistName}")
+    @GetMapping("/album/albumsbyartistname/{artistName}")
     public List<Album> getAlbumsByArtistName(@PathVariable("artistName") String artistName) {
         return albumService.findAlbumsByArtistName(artistName);
     }
     // GET ALBUM BY ALBUM TITLE
-    @GetMapping("/searchbyname/{albumTitle}")
+    @GetMapping("/album/searchbyname/{albumTitle}")
     public Album getAlbumByTitle(@PathVariable("albumTitle") String albumTitle){
         return albumService.getAlbumByTitle(albumTitle);
     }
     // GET ALL ALBUMS
-    @GetMapping("/getall")
+    @GetMapping("/album/getall")
     public List<Album> getAllAlbums(){
         return albumService.getAllAlbums();
     }
     // GET ALBUM BY ID todo: ResponseEntity <----------------------
-    @GetMapping("/getbyid/{id}")
+    @GetMapping("/album/getbyid/{id}")
     public Optional<Album> albumById(@PathVariable("id") int id){
         return albumService.albumById(id);
     }
 
     // POST, CREATE/SAVE NEW ALBUM
-    @PostMapping("/add")
+    @PostMapping("/album/add")
     public Album saveAlbum(Album newAlbum){
         return albumService.saveAlbum(newAlbum);
     }
@@ -59,12 +59,12 @@ public class AlbumController {
 
     // DELETE ALBUM
     // returnerar en sträng som bekräftelse todo: kan ändras <-----------
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/album/delete/{id}")
     public String deleteAlbum(@PathVariable("id") int id){
         return albumService.deleteAlbum(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/album/update/{id}")
     public ResponseEntity<Album> updateAlbum(@PathVariable("id") int id, @RequestBody Album album){
         return ResponseEntity.ok(albumService.updateAlbum(album, id));
     }

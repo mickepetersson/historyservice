@@ -20,23 +20,23 @@ public class TrackController {
     }
 
     // search track by name
-    @GetMapping("/gettrackbyname/{trackName}")
+    @GetMapping("/track/gettrackbyname/{trackName}")
     public Track getTrackByName(@PathVariable("trackName") String trackName){
         return trackService.getTrackByName(trackName);
     }
     // GET ALL TRACKS
-    @GetMapping("/getall")
+    @GetMapping("/track/getall")
     public List<Track> getAllAllTracks(){
         return trackService.getAllTracks();
     }
     // GET TRACKS BY ID todo: ResponseEntity <----------------------
-    @GetMapping("/getbyid/{id}")
+    @GetMapping("/track/getbyid/{id}")
     public Optional<Track> trackById(@PathVariable("id") int id){
         return trackService.getTrackById(id);
     }
 
     // POST, CREATE/SAVE NEW TRACK
-    @PostMapping("/add")
+    @PostMapping("/track/add")
     public Track saveTrack(Track newTrack){
         return trackService.saveTrack(newTrack);
     }
@@ -45,24 +45,24 @@ public class TrackController {
 
     // DELETE TRACK
     // returnerar en sträng som bekräftelse todo: kan ändras <-----------
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/track/delete/{id}")
     public String deleteTrack(@PathVariable("id") int id){
         return trackService.deleteTrack(id);
     }
 
-    @GetMapping("/bygenre/{genreName}")
+    @GetMapping("/track/bygenre/{genreName}")
     public List<Track> findTrackByGenre(@PathVariable("genreName")String genreName){
         genreName = genreName.replace("-", " ").replace("+", " ").replace("%", " ");
         return trackService.findTrackByGenre(genreName);
     }
 
-    @GetMapping("/byalbum/{albumName}")
+    @GetMapping("/track/byalbum/{albumName}")
     public List<Track> findAlbumbyTrack(@PathVariable("albumName")String albumName){
         albumName = albumName.replace("-", " ").replace("+", " ").replace("%", " ");
         return trackService.findTrackByAlbum(albumName);
     }
 
-    @PutMapping("/updateTracks/{id}")
+    @PutMapping("/track/updateTracks/{id}")
     public ResponseEntity<Track> updateTracks(@PathVariable("id")int id, @RequestBody Track track) {
         return ResponseEntity.ok(trackService.updateTracks(track, id));
     }

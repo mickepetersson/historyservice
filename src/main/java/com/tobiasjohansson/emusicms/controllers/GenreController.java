@@ -16,31 +16,31 @@ public class GenreController {
     @Autowired
     private GenreServices genreServices;
 
-    @PostMapping("/add")
+    @PostMapping("/genre/add")
     public ResponseEntity<Genre> saveCustomer(@RequestBody Genre genre) {
 
         return new ResponseEntity<>(genreServices.saveGenre(genre), HttpStatus.CREATED);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/genre/getall")
     public List<Genre> getAllGenres() {
         return genreServices.getAllGenres();
     }
 
-    @PutMapping("/update")
+    @PutMapping("/genre/update")
     public ResponseEntity<Genre> updateGenre(@PathVariable("id") int id, @RequestBody Genre genre) {
 
         return ResponseEntity.ok(genreServices.updateGenre(genre, id));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/genre/delete/{id}")
     public ResponseEntity<String> deleteGenre(@PathVariable("id") int id) {
         genreServices.deleteGenre(id);
 
         return new ResponseEntity<String>("Genre deleted!", HttpStatus.OK);
     }
 
-    @GetMapping("/searchbyname/{genre}")
+    @GetMapping("/genre/searchbyname/{genre}")
     public List<Genre> findByGenre(@PathVariable("genre") String genre){
         genre = genre.replace("-", " ").replace("+", " ").replace("%", " ");
         return genreServices.findByGenre(genre);
