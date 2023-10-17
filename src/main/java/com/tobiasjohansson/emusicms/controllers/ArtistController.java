@@ -26,52 +26,52 @@ public class ArtistController {
     }
 
     //get all artists
-    @GetMapping("/getall")
+    @GetMapping("/artist/getall")
     public List<Artist> getAllAllArtists(){
         return artistServices.getAllArtists();
     }
 
     //get artist by id
-    @GetMapping("/getbyid/{id}")
+    @GetMapping("/artist/getbyid/{id}")
     public Optional<Artist> artistById(@PathVariable("id") int id){
         return artistServices.getArtistById(id);
     }
 
     //get artists by genre-id
-    @GetMapping ("/getartistsbygenre/{id}")
+    @GetMapping ("/artist/getartistsbygenre/{id}")
 
     public List<Artist> getArtistsByGenreId(@PathVariable("id") int id){ return artistServices.getArtistsByGenre(id); }
 
-    @GetMapping("/bygenre/{genreName}")
+    @GetMapping("/artist/bygenre/{genreName}")
     public List<Artist> getArtistsByGenreName (@PathVariable("genreName") String genreName){
         return artistServices.getArtistsByGenreName(genreName);
     }
 
     //add/create artist
-    @PostMapping("/add")
+    @PostMapping("/artist/add")
     public Artist saveArtist(Artist newArtist){
         return artistServices.createArtist(newArtist);
     }
 
     //update artist
-    @PutMapping("/update/{id}")
+    @PutMapping("/artist/update/{id}")
     public ResponseEntity<Artist> updateArtist(@PathVariable("id")int id, @RequestBody Artist artist) {
         return ResponseEntity.ok(artistServices.updateArtist(artist, id));
     }
     //delete artist
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/artist/delete/{id}")
     public void deleteArtist(@PathVariable("id") int id){
         artistServices.deleteArtist(id);
     }
 
-    @GetMapping("/searchbyname/{artist}")
+    @GetMapping("/artist/searchbyname/{artist}")
     public List<Artist> findByName(@PathVariable("artist") String artist){
         artist = artist.replace("-", " ").replace("+", " ").replace("%", " ");
         return artistServices.getArtistsByName(artist);
     }
 
-    @GetMapping("/findtracks/{artistName}")
+    @GetMapping("/artist/findtracks/{artistName}")
     public List<Track> findTrackByArtist(@PathVariable("artistName")String artistName){
         artistName = artistName.replace("-", " ").replace("+", " ").replace("%", " ");
         return trackService.getTrackByArtist(artistName);
