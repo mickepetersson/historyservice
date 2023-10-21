@@ -3,6 +3,7 @@ values ('music'),
        ('video'),
        ('podcast');
 
+/*
 insert into GENRES (genre_name)
 values ('Black Metal'),
        ('Crust Punk'),
@@ -87,4 +88,4 @@ VALUES (4, 3, 1, 'Fight Fire With Fire', '27-07-1984', 6),
        (4, 3, 1,'Trapped Under Ice', '27-07-1984', 6),
        (4, 3, 1,'Escape ', '27-07-1984', 6),
        (4, 3, 1,'Creeping Death', '27-07-1984', 6),
-       (4, 3, 1,'Call Of Ktulu', '27-07-1984', 6);
+       (4, 3, 1,'Call Of Ktulu', '27-07-1984', 6);*/
