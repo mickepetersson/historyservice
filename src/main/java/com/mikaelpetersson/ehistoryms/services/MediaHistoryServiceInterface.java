@@ -3,6 +3,7 @@ package com.mikaelpetersson.ehistoryms.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mikaelpetersson.ehistoryms.models.MediaHistory;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -15,8 +16,13 @@ public interface MediaHistoryServiceInterface {
     //get media history by user
     List<MediaHistory> getByUserId(int userId);
 
+    MediaHistory addHistoryItem(int mediaId) throws JsonProcessingException;
+
     //POST add history
-    MediaHistory addMedia() throws JsonProcessingException;
+    MediaHistory addTrack(int mediaId);
+    MediaHistory addPod(int mediaId);
+
+    MediaHistory addVideo(int mediaId);
 
 
 }
